@@ -21,9 +21,9 @@ ratpack {
             def id = pathTokens["id"]
             Content content = contentService.findById(id)
             if (content) {
-                context.response.send("application/json", toJson(content))
+                context.response.send MediaType.APPLICATION_JSON, toJson(content)
             } else {
-                context.response.send("application/json", toJson("No content found for id : $id"))
+                context.response.send MediaType.APPLICATION_JSON, toJson("Content not found for id : $id")
             }
         }
 
@@ -31,9 +31,9 @@ ratpack {
             def type = pathTokens["type"]
             List<Content> contents = contentService.findByType(type)
             if (contents) {
-                context.response.send("application/json", toJson(contents))
+                context.response.send MediaType.APPLICATION_JSON, toJson(contents)
             } else {
-                context.response.send("application/json", toJson("No content found for type : $type"))
+                context.response.send MediaType.APPLICATION_JSON, toJson("Content not found for type : $type")
             }
         }
 
